@@ -31,12 +31,12 @@
     </div>
 
     <!--- display the header -->
-    @include('partials.Header')
+    @include('frontend.partials.Header')
 
     @yield('content')
 
     <!--- display the footer -->
-    @include('partials.Header')
+    @include('frontend.partials.Footer')
 
 
     <!-- Search Begin -->

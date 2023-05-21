@@ -1,5 +1,7 @@
 @extends('frontend.app')
-
+@section('title')
+   shoppin cart
+@endsection
 @section('content')
 
     <!-- Breadcrumb Section Begin -->

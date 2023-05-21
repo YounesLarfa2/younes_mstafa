@@ -1,5 +1,7 @@
 @extends('frontend.app')
-
+@section('title')
+    shop Details
+@endsection
 @section('content')
     <!-- Breadcrumb Section Begin -->
         <section class="breadcrumb-option">

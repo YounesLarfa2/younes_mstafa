@@ -1,5 +1,7 @@
 @extends('frontend.app')
-
+@section('title')
+    shop
+@endsection
 @section('content')
     <!-- Shop Details Section Begin -->
     <section class="shop-details">

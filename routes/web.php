@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/admin/ok', function () {
-    
+
     return view('admin.app');
 });
 
 Route::get('/', function () {
     return view('frontend.homePage');
+});
+
+Route::get('/shop', function () {
+    return view('frontend.shopPage');
 });

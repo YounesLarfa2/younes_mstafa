@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin/ok', function () {
 
-    return view('admin.app');
-});
 
 Route::get('/', function () {
     return 'test';

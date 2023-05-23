@@ -13,29 +13,29 @@ class MainController extends Controller
 
 
     public function shop(){
-        return 'ok';
+        return  view('frontend.shopPage');;
     }
 
 
     public function category($categoryName){
-        return 'ok';
+        return  view('frontend.shopPage');;
     }
 
 
     public function shopDetails($id){
-        return 'ok';
+        return  view('frontend.shopDetails');;
     }
 
 
     public function cart(){
-        return 'ok';
+        return  view('frontend.shoppingCart');;
     }
 
     public function checkout(){
-        return 'ok';
+        return  view('frontend.checkout');;
     }
 
     public function unfound404(){
-        return 404;
+        return  '404';
     }
 }

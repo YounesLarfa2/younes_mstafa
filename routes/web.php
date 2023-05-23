@@ -19,9 +19,11 @@ Route::name('frontend.')
 
         Route::get('/',[MainController::class,'index'])->name('index');
         Route::get('/shop',[MainController::class,'shop'])->name('shop');
-        Route::get('/category/{category_name}',[MainController::class,'category'])->name('index');
-        Route::get('/',[MainController::class,'index'])->name('index');
-        Route::get('/',[MainController::class,'index'])->name('index');
+        Route::get('/category/{category_name}',[MainController::class,'category'])->name('category_name');
+        Route::get('/shop-details/{id} ',[MainController::class,'shopDetails'])->name('shop_details');
+        Route::get('/cart',[MainController::class,'cart'])->name('cart');
+        Route::get('/checkout',[MainController::class,'checkout'])->name('checkout');
+        Route::get('/error/404',[MainController::class,'error'])->name('error');
 
      });
 
@@ -40,3 +42,4 @@ Route::name('admin.')
             Route::resource('users',UserController::class);
 
      });
+

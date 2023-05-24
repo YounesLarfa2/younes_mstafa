@@ -47,8 +47,6 @@
     <link rel="stylesheet" href="{{asset('admin/style.css')}}">
 
     <!-- endinject -->
-
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
 </head>
 
 <body class="layout-light side-menu overlayScroll">
@@ -60,15 +58,14 @@
     </div>
 
     <div class="mobile-author-actions"></div>
-    @include('admin.partials.header')
     <main class="main-content">
-
-        @include('admin.partials.sidebar')
+            <!-- //header -->
         <div class="contents">
-
+            <!-- aside -->
             @yield('content')
+
+            <!-- footer -->
         </div>
-        @include('admin.partials.footer')
     </main>
     <div id="overlayer">
         <span class="loader-overlay">
@@ -81,7 +78,6 @@
         </span>
     </div>
     <div class="overlay-dark-sidebar"></div>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDduF2tLXicDEPDMAtC6-NLOekX0A5vlnY"></script>
     <!-- inject:js-->
     <script src="{{asset('admin/assets/vendor_assets/js/jquery/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('admin/assets/vendor_assets/js/jquery/jquery-ui.js')}}"></script>
@@ -124,7 +120,6 @@
     <script src="{{asset('admin/assets/theme_assets/js/footable.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/full-calendar.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/googlemap-init.js')}}"></script>
-    <script src="{{asset('admin/assets/theme_assets/js/icon-loader.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/jvectormap-init.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/leaflet-init.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/main.js')}}"></script>

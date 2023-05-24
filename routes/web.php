@@ -12,17 +12,19 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/admin/ok', function () {
 
+    return view('admin.app');
+});
 
 Route::get('/', function () {
     return 'test';
 });
 
-<<<<<<< HEAD
+
 Route::get('/shop', function () {
     return view('frontend.shopPage');
 });
-=======
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +40,4 @@ Route::name('admin.')
             Route::resource('orders',OrderController::class);
             Route::resource('users',UserController::class);
 
-     });
->>>>>>> d67f3127191db90f440f4b988baa18dbc2c41381
+});

@@ -1,13 +1,41 @@
 @extends('admin.app')
 
 @section('content')
+<div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-breadcrumb">
 
-<div class="col-lg-12 mb-30">
+                            <div class="breadcrumb-main add-contact justify-content-sm-between ">
+                                <div class=" d-flex flex-wrap justify-content-center breadcrumb-main__wrapper">
+                                    <div class="d-flex align-items-center add-contact__title justify-content-center mr-sm-25">
+                                        <h4 class="text-capitalize fw-500 breadcrumb-title">Data List</h4>
+                                        <span class="sub-title ml-sm-25 pl-sm-25"></span>
+                                    </div>
+                                    <div class="action-btn mt-sm-0 mt-15">
+                                        <a href="firestore-add.html" class="btn px-20 btn-primary ">
+                                            <i class="las la-plus fs-16"></i>Add New
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="breadcrumb-main__wrapper">
+
+                                    <form action="/" class="d-flex align-items-center add-contact__form my-sm-0 my-2">
+                                        <span data-feather="search"></span>
+                                        <input class="form-control mr-sm-2 border-0 box-shadow-none" type="search" placeholder="Search by Name" aria-label="Search">
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- ends: contact-breadcrumb -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
                         <div class="card">
                             <div class="card-header color-dark fw-500">
                                 User List
-
-                                <a href="{{route('admin.products.create')}}" class="text-end btn btn-success">Create New</a>
                             </div>
                             <div class="card-body">
 
@@ -800,7 +828,38 @@
                                     </div>
                                 </div>
 
+                                <div class="d-flex justify-content-sm-end justify-content-start pt-25">
+
+                                    <nav class="atbd-page ">
+                                        <ul class="atbd-pagination d-flex">
+                                            <li class="atbd-pagination__item">
+                                                <a href="#" class="atbd-pagination__link pagination-control"><span class="la la-angle-left"></span></a>
+                                                <a href="#" class="atbd-pagination__link"><span class="page-number">1</span></a>
+                                                <a href="#" class="atbd-pagination__link active"><span class="page-number">2</span></a>
+                                                <a href="#" class="atbd-pagination__link"><span class="page-number">3</span></a>
+                                                <a href="#" class="atbd-pagination__link pagination-control"><span class="page-number">...</span></a>
+                                                <a href="#" class="atbd-pagination__link"><span class="page-number">12</span></a>
+                                                <a href="#" class="atbd-pagination__link pagination-control"><span class="la la-angle-right"></span></a>
+                                                <a href="#" class="atbd-pagination__option">
+                                                </a>
+                                            </li>
+                                            <li class="atbd-pagination__item">
+                                                <div class="paging-option">
+                                                    <select name="page-number" class="page-selection">
+                                                        <option value="20">20/page</option>
+                                                        <option value="40">40/page</option>
+                                                        <option value="60">60/page</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
 @endsection

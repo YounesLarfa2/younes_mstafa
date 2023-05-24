@@ -29,10 +29,10 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="" href="inbox.html">View All</a>
+                                    <a class="" href="{{route('admin.products.index')}}">View All</a>
                                 </li>
                                 <li>
-                                    <a class="" href="read-email.html">Add
+                                    <a class="" href="{{route('admin.products.create')}}">Add
                                      Product</a>
                                 </li>
                             </ul>
@@ -46,10 +46,10 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="" href="inbox.html">View All</a>
+                                    <a class="" href="{{route('admin.categories.index')}}">View All</a>
                                 </li>
                                 <li>
-                                    <a class="" href="read-email.html">Add
+                                    <a class="" href="{{route('admin.categories.create')}}"">Add
                                         Category</a>
                                 </li>
                             </ul>

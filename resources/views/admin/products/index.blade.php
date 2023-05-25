@@ -92,7 +92,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="userDatatable-content d-inline-block">
-                                                            <span class="bg-opacity-success  color-success rounded-pill userDatatable-content-status active">active</span>
+                                                            <span class="bg-opacity-success  color-success rounded-pill userDatatable-content-status active">in stock</span>
                                                         </div>
                                                     </td>
                                                     <td>

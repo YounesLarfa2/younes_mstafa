@@ -1,0 +1,10 @@
+.no-product{
+    margin: 150px auto;
+}
+.custom-pagination
+{
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    color: red;
+}

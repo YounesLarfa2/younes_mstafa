@@ -66,7 +66,7 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon2">
-                                                <span data-feather="percent"></span></span>
+                                            <span data-feather="percent"></span></span>
                                         </div>
                                         <div class="pt_Quantity">
                                             <input type="number" class="form-control" min="0" max="100" step="1" value="0" data-inc="1" name="discount_price">

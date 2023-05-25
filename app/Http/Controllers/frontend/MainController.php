@@ -27,7 +27,7 @@ class MainController extends Controller
 
     public function category($categoryName)
     {
-        return  view('frontend.shopPage');;
+        return  view('frontend.shopPage');
     }
 
 

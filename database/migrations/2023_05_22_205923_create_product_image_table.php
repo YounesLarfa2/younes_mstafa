@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_image', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("product_color_size_Id")->references("id")->on("product_color_size");
+            $table->foreignId("product_id")->references("id")->on("products");
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\product;
 
 class categoriers extends Model
 {
@@ -13,4 +14,9 @@ class categoriers extends Model
         "name",
         "image",
     ];
+
+    public function products()
+    {
+        return $this->hasMany(product::class, 'category_id', "id");
+    }
 }

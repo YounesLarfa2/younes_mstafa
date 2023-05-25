@@ -2,16 +2,10 @@
 <div class="col-lg-4 col-md-6 col-sm-6">
     <div class="product__item">
         <div class="product__item__pic set-bg" data-setbg="{{ url('frontend/img/product/' . $product->image) }}">
-            <ul class="product__hover">
-                <li><a href="#"><img src="{{url("img/icon/heart.png")}}" alt=""></a></li>
-                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>lore</span></a>
-                </li>
-                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-            </ul>
         </div>
         <div class="product__item__text">
             <h6>{{ $product->name }}</h6>
-            <a href="#" class="add-cart">+ Add To Cart</a>
+            <a href="{{ route('frontend.shop_details', $product->id) }}" class="add-cart">show details</a>
             <div class="rating">
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>

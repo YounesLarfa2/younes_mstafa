@@ -8,3 +8,6 @@
     justify-content: center;
     color: red;
 }
+.custom-img img {
+    min-width: 100%;
+}

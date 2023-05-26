@@ -59,13 +59,14 @@
 
     <div class="mobile-author-actions"></div>
     <main class="main-content">
-            <!-- //header -->
+            <!-- //admin.partials.header -->
         <div class="contents">
-            <!-- aside -->
+            <!-- //admin.partials.aside -->
+            
             @yield('content')
 
-            <!-- footer -->
-        </div>
+            <!-- //admin.partials.footer -->
+            </div>
     </main>
     <div id="overlayer">
         <span class="loader-overlay">

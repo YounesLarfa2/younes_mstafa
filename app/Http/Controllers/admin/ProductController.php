@@ -25,11 +25,11 @@ class ProductController extends Controller
 
     public function store(Request $req)
     {
+
         $req->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
-            'discount_price' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png|max:2048',
             'category_name' =>'required'
             ]);

@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_image', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("product_id")->references("id")->on("products");
-            $table->timestamps();
+        Schema::table('product_image', function (Blueprint $table) {
+            $table->string("image");
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_image');
+        Schema::table('product_image', function (Blueprint $table) {
+            //
+        });
     }
 };

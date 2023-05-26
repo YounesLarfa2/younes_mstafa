@@ -13,7 +13,7 @@ Route::name('frontend.')
 
         Route::get('/', [MainController::class, 'index'])->name('index');
         Route::get('/shop', [MainController::class, 'shop'])->name('shop');
-        Route::get('/category/{category_name}', [MainController::class, 'category'])->name('category_name');
+        Route::get('/category/{categorie}', [MainController::class, 'category'])->name('category_name');
         Route::get('/shop-details/{id} ', [MainController::class, 'shopDetails'])->name('shop_details');
         Route::get('/cart', [MainController::class, 'cart'])->name('cart');
         Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout');

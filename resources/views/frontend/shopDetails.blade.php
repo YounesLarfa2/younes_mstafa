@@ -3,6 +3,8 @@
     product Details
 @endsection
 @section('content')
+        <!--header -->
+        <x-header :categoriers="$categoriers"></x-header>
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
         <div class="product__details__pic">

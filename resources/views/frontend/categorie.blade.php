@@ -1,10 +1,9 @@
 @extends('frontend.app')
 @section('title')
-    shop
+    categorier
 @endsection
 
 @section('content')
-
     <!--header -->
     <x-header :categoriers="$categoriers"></x-header>
 
@@ -14,10 +13,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h4>Shop</h4>
+                        <h4>categoriers</h4>
                         <div class="breadcrumb__links">
                             <a href="./index.html">Home</a>
-                            <span>Shop</span>
+                            <span>categorier</span>
                         </div>
                     </div>
                 </div>
@@ -25,7 +24,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-
+    <div class="categorie-line"><span>{{ $categorie_name }}</span></div>
     <!-- Shop Section Begin -->
     <section class="shop spad">
         <div class="container">
@@ -40,22 +39,6 @@
                         </div>
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__categories">
-                                                <ul class="nice-scroll">
-                                                    @foreach ($categoriers as $categorier)
-                                                        <li><a href="#">{{ $categorier->name }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="card">
                                     <div class="card-heading">
@@ -159,7 +142,6 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1–{{ count($products) }} of {{ count($productsAll) }} results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -175,7 +157,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @if (count($products) != 0)
+                         @if (count($products) != 0)
                             @foreach ($products as $product)
                                 <x-product-card :product="$product"></x-product-card>
                             @endforeach
@@ -184,8 +166,8 @@
                         @endif
                     </div>
                     <div class="custom-pagination">
-                        {{ $products->links() }}
-                    </div>
+                        {{$products->links() }}
+                    </div> -
                 </div>
             </div>
         </div>

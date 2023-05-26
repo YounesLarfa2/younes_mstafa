@@ -2,7 +2,10 @@
 @section('title')
     check out
 @endsection
+
 @section('content')
+    <!--header -->
+    <x-header :categoriers="$categoriers"></x-header>
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">

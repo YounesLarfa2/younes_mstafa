@@ -1,9 +1,10 @@
 @extends('frontend.app')
 @section('title')
-   shoppin cart
+    shoppin cart
 @endsection
 @section('content')
-
+    <!--header -->
+    <x-header :categoriers="$categoriers"></x-header>
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -42,7 +43,7 @@
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="{{asset('frontend/img/product/product-2.jpg') }}" alt="">
+                                            <img src="{{ asset('frontend/img/product/product-2.jpg') }}" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6>T-shirt Contrast Pocket</h6>
@@ -62,7 +63,7 @@
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="{{asset('frontend/img/product/product-2.jpg') }}" alt="">
+                                            <img src="{{ asset('frontend/img/product/product-2.jpg') }}" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6>Diagonal Textured Cap</h6>
@@ -82,7 +83,7 @@
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="{{asset('frontend/img/product/product-2.jpg') }}" alt="">
+                                            <img src="{{ asset('frontend/img/product/product-2.jpg') }}" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6>Basic Flowing Scarf</h6>
@@ -102,7 +103,7 @@
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="{{asset('frontend/img/product/product-2.jpg') }}" alt="">
+                                            <img src="{{ asset('frontend/img/product/product-2.jpg') }}" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6>Basic Flowing Scarf</h6>

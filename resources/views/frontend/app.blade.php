@@ -34,14 +34,9 @@
         <div class="loader"></div>
     </div>
 
-    <!--- display the header -->
-    @include('frontend.partials.Header')
-
     @yield('content')
-
     <!--- display the footer -->
     @include('frontend.partials.Footer')
-
 
     <!-- Search Begin -->
     <div class="search-model">

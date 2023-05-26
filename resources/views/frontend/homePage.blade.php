@@ -3,6 +3,8 @@
     Home
 @endsection
 @section('content')
+    <!--header -->
+    <x-header :categoriers="$categoriers"></x-header>
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">

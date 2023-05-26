@@ -13,7 +13,8 @@ class MainController extends Controller
     public function index()
     {
         $newProducts = product::orderBy("id", "desc")->limit(12)->get();
-        return view('frontend.homePage', compact("newProducts"));
+        $categoriers = categoriers::all();
+        return view('frontend.homePage', compact("newProducts", "categoriers"));
     }
 
 
@@ -26,33 +27,40 @@ class MainController extends Controller
     }
 
 
-    public function category($categoryName)
+    public function category(categoriers $categorie)
+
     {
-        return  view('frontend.shopPage');
+        $categorie_name=$categorie->name;
+        $categoriers = categoriers::all();
+        $Allproducts=$categorie->products;
+        $products=$categorie->products()->paginate(12);
+        return  view('frontend.categorie', compact("categoriers","categorie_name","products"));
     }
 
 
     public function shopDetails($id)
     {
-
         $product = product::find($id);
         $RelatedProducts = product::all()->where("category_id", "==", $product->category_id);
         $product_images = $product->product_images;
         $product_categorie = $product->categorie->name;
         $product_sizes = $product->product_sizes;
-        $product_colors=$product->product_colors;
-        return  view('frontend.shopDetails', compact("product", "RelatedProducts", "product_images", "product_categorie", "product_sizes","product_colors"));
+        $product_colors = $product->product_colors;
+        $categoriers = categoriers::all();
+        return  view('frontend.shopDetails', compact("product", "RelatedProducts", "product_images", "product_categorie", "product_sizes", "product_colors", "categoriers"));
     }
 
 
     public function cart()
     {
-        return  view('frontend.shoppingCart');;
+        $categoriers = categoriers::all();
+        return  view('frontend.shoppingCart', compact("categoriers"));;
     }
 
     public function checkout()
     {
-        return  view('frontend.checkout');;
+        $categoriers = categoriers::all();
+        return  view('frontend.checkout', compact("categoriers"));;
     }
 
     public function unfound404()

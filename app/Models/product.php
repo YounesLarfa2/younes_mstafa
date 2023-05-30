@@ -19,9 +19,9 @@ class Product extends Model
         return $this->hasMany(product_image::class, "product_id", "id");
     }
 
-    public function categorie()
+    public function category()
     {
-        return $this->belongsTo(categoriers::class, "category_id");
+        return $this->belongsTo(Category::class);
     }
 
     public function product_sizes()
@@ -32,5 +32,9 @@ class Product extends Model
     public function product_colors()
     {
         return $this->hasMany(product_color::class, "product_Id", "id");
+    }
+
+    public function product_colors_sizes(){
+        return $this->hasManyThrough(ProductColorSize::class,product_size::class);
     }
 }

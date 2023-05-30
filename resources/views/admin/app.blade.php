@@ -1,13 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+    <meta name="_token" content="{{csrf_token()}}" />
+
     <title>StrikingDash</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <!-- inject:css-->
     <link rel="stylesheet" href="{{asset('admin/assets/vendor_assets/css/bootstrap/bootstrap.css')}}">
@@ -45,11 +49,14 @@
     <link rel="stylesheet" href="{{asset('admin/assets/vendor_assets/css/wickedpicker.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('admin/style.css')}}">
-
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <!-- endinject -->
 </head>
 
 <body class="layout-light side-menu overlayScroll">
+
     <div class="mobile-search">
         <form class="search-form">
             <span data-feather="search"></span>
@@ -57,16 +64,25 @@
         </form>
     </div>
 
-    <div class="mobile-author-actions"></div>
-    <main class="main-content">
-            <!-- //admin.partials.header -->
-        <div class="contents">
-            <!-- //admin.partials.aside -->
-            
-            @yield('content')
 
-            <!-- //admin.partials.footer -->
+    <div class="mobile-author-actions"></div>
+
+    <main class="main-content">
+        @include('admin.partials.header')
+
+        <div class="row justify-content-between">
+            <div class="col-2">
+                @include('admin.partials.aside')
             </div>
+            <div class="col-9">
+                
+                @yield('content')
+            </div>
+        
+        </div>
+
+        <!-- //admin.partials.footer -->
+        </div>
     </main>
     <div id="overlayer">
         <span class="loader-overlay">
@@ -80,6 +96,7 @@
     </div>
     <div class="overlay-dark-sidebar"></div>
     <!-- inject:js-->
+
     <script src="{{asset('admin/assets/vendor_assets/js/jquery/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('admin/assets/vendor_assets/js/jquery/jquery-ui.js')}}"></script>
     <script src="{{asset('admin/assets/vendor_assets/js/bootstrap/popper.js')}}"></script>
@@ -124,6 +141,8 @@
     <script src="{{asset('admin/assets/theme_assets/js/jvectormap-init.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/leaflet-init.js')}}"></script>
     <script src="{{asset('admin/assets/theme_assets/js/main.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
     <!-- endinject-->
 </body>
 

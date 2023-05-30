@@ -106,8 +106,14 @@
                                                                     <span data-feather="edit"></span></a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" class="remove">
-                                                                    <span data-feather="trash-2"></span></a>
+                                                                <form action="" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <a href="#" class="remove">
+                                                                        <span data-feather="trash-2"></span>
+                                                                    </a>
+                                                                </form>
+
                                                             </li>
                                                         </ul>
                                                     </td>

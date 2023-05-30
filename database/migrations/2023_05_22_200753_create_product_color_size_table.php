@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('product_color_size', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("product_size_Id")->references("id")->on("product_sizes");
-            $table->foreignId("product_colors_Id")->references("id")->on("product_colors");
+            $table->foreignId("product_size_id")->references("id")->on("product_sizes");
+            $table->foreignId("product_color_id")->references("id")->on("product_colors");
             $table->integer("quantity");
-            $table->decimal("price tow",10,2)->nullable();
+            $table->decimal("price",10,2)->nullable();
             $table->decimal("discount",10,2)->nullable();
-            $table->string("status")->default(1);
+            $table->string("status")->default('pending ')->nullable();
             $table->timestamps();
         });
     }

@@ -2,10 +2,10 @@
 <!-- Header Section Begin -->
 <header class="header">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="{{ asset('frontend/img/logo.png') }}" alt=""></a>
+                    <a href="{{URL('/')}}"><img src="{{asset('frontend/img/logo.png')}}" width='180' alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">

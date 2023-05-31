@@ -19,7 +19,7 @@ class ProductController extends Controller
 
 
     public function index()
-    {   
+    {
         $products = Product::paginate(8);
         $collapsed = 'display-products';
         return view('admin2.products.index',compact('products','collapsed'));
@@ -61,7 +61,7 @@ class ProductController extends Controller
         };
 
         if(isset($req->qte_1)){
-            $reversed =  array_reverse($req->all()); 
+            $reversed =  array_reverse($req->all());
             $num_products =  $reversed;
             $second = array_slice($num_products, 1, 1, true);
             $number = explode('_',array_key_first($second) );
@@ -70,9 +70,9 @@ class ProductController extends Controller
 
             for ($i=1; $i <= $number ; $i++) {
                 $custom_product_color = new product_color();
-                $custom_product_size = new product_size();      
-    
-                $existed_color = product_color::where('color',$req->{'color_' . $i})->where('product_id',$product->id)->first();// RED // BLUE 
+                $custom_product_size = new product_size();
+
+                $existed_color = product_color::where('color',$req->{'color_' . $i})->where('product_id',$product->id)->first();// RED // BLUE
                 if(!$existed_color){ // TRUE // TRUE
                     $custom_product_color->product_id = $product->id;
                     $custom_product_color->color = $req->{'color_' . $i};
@@ -99,7 +99,7 @@ class ProductController extends Controller
                 $product_color_size->status = 'pending';
                 $product_color_size->save();
             }
-            
+
                 // RED XL , BLUE , XL
             return to_route('admin.products.index');
 
@@ -107,7 +107,7 @@ class ProductController extends Controller
         else{
             return to_route('admin.products.index');
         }
-        
+
 
     }
     public function storeImages(Request $request)
@@ -115,13 +115,13 @@ class ProductController extends Controller
         $image = $request->file('file');
         $imageName = $image->getClientOriginalName();
         $image->move(public_path('uploads'),$imageName);
-         
+
         $imageUpload = new ImageUpload();
         $imageUpload->image_path = $imageName;
         $imageUpload->product_id =
         $imageUpload->save();
         return response()->json(['success'=>$imageName]);
-        
+
 
     }
 
@@ -152,8 +152,10 @@ class ProductController extends Controller
 
     public function destroy(string $id)
     {
-        // dd($id);
-        Product::find($id)->delete();
+        $product = Product::find($id);
+        if($product){
+            $product->delete();
+            }
         return redirect()->back();
     }
 }

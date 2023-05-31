@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'categoriers';
+    protected $table = 'categories';
     use HasFactory;
 }

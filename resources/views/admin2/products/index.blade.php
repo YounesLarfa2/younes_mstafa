@@ -41,7 +41,7 @@
                         <form action="{{route('admin.products.destroy',$product->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a type='submit'  class=" remove hover-effect px-2" onclick="document.querySelector('form').submit()">
+                            <a type='submit'  class=" remove hover-effect px-2" onclick="this.parentNode.submit()   ">
                                 <i class="bi bi-trash-fill text-danger fs-3"></i></button>
                         </form>
 

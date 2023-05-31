@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('image_uploads', function (Blueprint $table) {
             $table->id();
             $table->string('image_path');
-            // $table->foreignId("product_id")->references("id")->on("products");
+             $table->foreignId("product_id")->references("id")->on("products")->ondelete('cascade');
             $table->timestamps();
         });
     }

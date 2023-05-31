@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\categoriers;
+use App\Models\Category;
 use App\Models\product;
 
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class MainController extends Controller
     public function index()
     {
         $newProducts = product::orderBy("id", "desc")->limit(12)->get();
-        $categoriers = categoriers::all();
+        $categoriers = Category::all();
         return view('frontend.homePage', compact("newProducts", "categoriers"));
     }
 
@@ -22,12 +23,12 @@ class MainController extends Controller
     {
         $products = product::paginate(12);
         $productsAll = product::all();
-        $categoriers = categoriers::all();
+        $categoriers = Category::all();
         return  view('frontend.shopPage', compact("products", "productsAll", "categoriers"));
     }
 
 
-    public function category(categoriers $categorie)
+    public function category(Category $categorie)
 
     {
         $categorie_name=$categorie->name;
@@ -43,23 +44,23 @@ class MainController extends Controller
         $product = product::find($id);
         $RelatedProducts = product::all()->where("category_id", "==", $product->category_id);
         $product_images = $product->product_images;
-        $product_categorie = $product->categorie->name;
+        $product_categorie = $product->category->name;
         $product_sizes = $product->product_sizes;
         $product_colors = $product->product_colors;
-        $categoriers = categoriers::all();
+        $categoriers = Category::all();
         return  view('frontend.shopDetails', compact("product", "RelatedProducts", "product_images", "product_categorie", "product_sizes", "product_colors", "categoriers"));
     }
 
 
     public function cart()
     {
-        $categoriers = categoriers::all();
+        $categoriers = Category::all();
         return  view('frontend.shoppingCart', compact("categoriers"));;
     }
 
     public function checkout()
     {
-        $categoriers = categoriers::all();
+        $categoriers = Category::all();
         return  view('frontend.checkout', compact("categoriers"));;
     }
 

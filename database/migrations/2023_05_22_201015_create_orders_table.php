@@ -15,15 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId("users_Id")->references("id")->on("users");
             $table->string("status");
-            $table->string("payment_method")->default("cash on delivery");
-            $table->string("payment_method_status");
-            $table->string("payment_id");
             $table->string("total_price");
             $table->string("address");
             $table->string("city");
             $table->string("full name");
             $table->string("phone");
-            $table->string("shipping_price");
             $table->timestamps();
         });
     }

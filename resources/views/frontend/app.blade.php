@@ -7,6 +7,7 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
     <!-- Google Font -->
@@ -60,6 +61,8 @@
     <script src="{{asset('frontend/js/mixitup.min.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="{{asset('admin2/js/jquery-3.7.0.min.js')}}"></script>
+    @yield('scripts')
 </body>
 
 </html>

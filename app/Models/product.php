@@ -16,7 +16,7 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price', 'discount_price', 'image', 'category_id'];
     public function product_images()
     {
-        return $this->hasMany(product_image::class, "product_id", "id");
+        return $this->hasMany(ImageUpload::class);
     }
 
     public function category()

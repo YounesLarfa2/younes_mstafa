@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +13,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $collapsed = 'display-users';
+        $users = User::paginate(10);  
+        return view('admin2.users.index',compact('users','collapsed'));
+    }
+    public function profile()
+    {
+        $collapsed = 'display-profile';
+        return view('admin2.users.profile',compact('collapsed'));
     }
 
     /**

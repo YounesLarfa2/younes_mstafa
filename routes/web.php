@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\frontend\MainController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::name('frontend.')
@@ -52,6 +54,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::middleware('')->group(function() {
+        Route::post('/cart/{product}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
+        Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
+        Route::delete('/cart/{cart}', [CartController::class, 'delete_cart'])->name('delete_cart');
+        Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+        Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
+        Route::get('/order/{order}', [OrderController::class, 'show_order'])->name('show_order');
+        Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
+        Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
+    });
 });
 
 require __DIR__.'/auth.php';

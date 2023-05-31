@@ -16,9 +16,7 @@ return new class extends Migration
             $table->foreignId("product_size_id")->references("id")->on("product_sizes")->onDelete('cascade');
             $table->foreignId("product_color_id")->references("id")->on("product_colors")->onDelete('cascade');
             $table->integer("quantity");
-            $table->decimal("price",10,2)->nullable();
-            $table->decimal("discount",10,2)->nullable();
-            $table->string("status")->default('pending')->nullable();
+            $table->string("status")->default('in_stock')->nullable();
             $table->timestamps();
         });
     }

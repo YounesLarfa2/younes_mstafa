@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class product_size extends Model
 {
+    public $timestamps = false;
+
     use HasFactory;
     protected $table = "product_sizes";
     protected $fillable = [

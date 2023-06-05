@@ -17,8 +17,6 @@ return new class extends Migration
             $table->foreignId("product_colors_size_id")->references("id")->on("product_color_size");
             $table->string("quantity");
             $table->decimal("price",10,2)->nullable();
-            $table->decimal("discount",10,2)->nullable();
-            $table->timestamps();
         });
     }
 

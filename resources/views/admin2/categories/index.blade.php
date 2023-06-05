@@ -13,14 +13,13 @@
 <div class="card">
 
     <div class="div d-flex justify-content-end">
+
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                     <button  type="button" id="add" data-bs-toggle="modal" data-bs-target="#addnew" class="btn btn-primary pull-right m-2"> Create</button>
                 </h2>
             </div>
         </div>
-
-
     </div>
 
 
@@ -61,7 +60,7 @@
         });
 
         showMember();
-        
+
         $('#addForm').on('submit', function(e) {
             e.preventDefault();
             var form = $(this).serialize();
@@ -79,9 +78,9 @@
             });
         });
 
-        function showMember(){ 
-            $.get("{{ route('admin.categories.list') }}", function(data){ 
-        
+        function showMember(){
+            $.get("{{ route('admin.categories.list') }}", function(data){
+
                 $('#memberBody').empty().html(data);
             })
         }

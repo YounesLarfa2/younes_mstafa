@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductColorSize extends Model
 {
+    public $timestamps = false;
+
     protected $table='product_color_size';
     protected $fillable = [
         "product_size_id",
@@ -26,6 +28,7 @@ class ProductColorSize extends Model
     {
         return $this->belongsTo(product_size::class);
     }
+    
 
 
     use HasFactory;

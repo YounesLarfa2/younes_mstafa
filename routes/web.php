@@ -12,11 +12,13 @@ use App\Http\Controllers\ProfileController;
 
 Route::name('frontend.')
     ->group(function () {
-
         Route::get('/', [MainController::class, 'index'])->name('index');
         Route::get('/shop', [MainController::class, 'shop'])->name('shop');
         Route::get('/category/{categorie}', [MainController::class, 'category'])->name('category_name');
         Route::get('/shop-details/{id} ', [MainController::class, 'shopDetails'])->name('shop_details');
+        Route::get('fetch-color/{prd_id}/{color}', [MainController::class, 'filter_by_color']);
+        Route::get('fetch-size/{prd_id}/{size}/{color}', [MainController::class, 'filter_by_size']);
+        Route::get('all-sizes/{prd_id}', [MainController::class, 'all_sizes']);
         Route::get('/cart', [MainController::class, 'cart'])->name('cart');
         Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout');
         Route::get('/checkout/order-received/1015', [MainController::class, 'order_recieved'])->name('order_recieved');
@@ -42,9 +44,6 @@ Route::name('admin.')
         Route::get('profile' ,[UserController::class,'profile'])->name('users.profile');
     });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -57,21 +56,22 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::middleware('')->group(function() {
-        Route::post('/cart/{product}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
-        Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
-        Route::delete('/cart/{cart}', [CartController::class, 'delete_cart'])->name('delete_cart');
-        Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
-        Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
-        Route::get('/order/{order}', [OrderController::class, 'show_order'])->name('show_order');
-        Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
-        Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
-    });
+Route::middleware('guest')->group(function() {
+    Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+    Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
+    Route::get('/order/{order}', [OrderController::class, 'show_order'])->name('show_order');
+//    Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
+//    Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
 });
+
+Route::delete('/destroy_cart/{cart}', [CartController::class, 'delete_cart'])->name('destroy_cart');
+Route::post('/cart/{product_id}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
+Route::post('update-cart', [CartController::class, 'update_cart'])->name('update_cart');
+Route::get('/showme',function(){
+    dd(session()->all());
+});
+Route::post('/checkout', [MainController::class, 'checkout_store'])->name('checkout');
+Route::get('/success_checkout', [MainController::class, 'success_checkout'])->name('success_checkout');
 
 require __DIR__.'/auth.php';

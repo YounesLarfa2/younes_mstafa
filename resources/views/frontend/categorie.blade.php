@@ -4,32 +4,16 @@
 @endsection
 
 @section('content')
-    <!--header -->
-    <x-header :categoriers="$categoriers"></x-header>
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>categoriers</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <span>categorier</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--header -->
+    <x-header :categoriers="$categoriers" :count="$count"></x-header>
     <!-- Breadcrumb Section End -->
-    <div class="categorie-line"><span>{{ $categorie_name }}</span></div>
+    <div class="categorie-line"><span style="font-weight: 700">{{ $categorie_name }}</span></div>
     <!-- Shop Section Begin -->
     <section class="shop spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-2">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
                             <form action="#">
@@ -40,25 +24,6 @@
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
 
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__price">
-                                                <ul>
-                                                    <li><a href="#">$0.00 - $50.00</a></li>
-                                                    <li><a href="#">$50.00 - $100.00</a></li>
-                                                    <li><a href="#">$100.00 - $150.00</a></li>
-                                                    <li><a href="#">$150.00 - $200.00</a></li>
-                                                    <li><a href="#">$200.00 - $250.00</a></li>
-                                                    <li><a href="#">250.00+</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseFour">Size</a>
@@ -132,6 +97,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-heading text-start">
+                                        <button class="btn btn-danger w-50">Filter</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -161,6 +131,12 @@
                             @foreach ($products as $product)
                                 <x-product-card :product="$product"></x-product-card>
                             @endforeach
+                                <x-product-card :product="$product"></x-product-card>
+                                <x-product-card :product="$product"></x-product-card>
+                                <x-product-card :product="$product"></x-product-card>
+                                <x-product-card :product="$product"></x-product-card>
+                                <x-product-card :product="$product"></x-product-card>
+
                         @else
                             <h2 class="no-product">There is no product at this time</h2>
                         @endif

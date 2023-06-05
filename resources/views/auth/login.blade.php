@@ -1,47 +1,70 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('auth.app')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('content')
+    <div class="">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                        <div class="card mb-3" style="width: 600px;">
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+                            <div class="card-body">
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+                                <div class="d-flex justify-content-center ">
+                                    <a href="/">
+                                        <img src="{{asset('frontend/img/logo.png')}}" alt="" width="300" style="padding-left: 35px"/>
+                                    </a>
+                                </div>
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <div class="col-12 my-2">
+                                        <label for="yourUsername" class="form-label">email</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="email" class="form-control" id="yourUsername" required>
+                                            <div class="invalid-feedback">Please enter your username.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <label for="yourPassword" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                        <div class="invalid-feedback">Please enter your password!</div>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe" >
+                                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                                        </div>
+                                        <style>
+                                            input[type=checkbox] {
+                                                ACCENT-COLOR: #dc3545;
+                                                -webkit-appearance: menulist;
+                                            }
+
+                                        </style>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <button class="btn btn-dark w-100" type="submit">Login</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0" >Don't have account? <a href="{{url('/register')}}" style="color:red">Create an account</a></p>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+        </section>
+
+    </div>
+
+@endsection

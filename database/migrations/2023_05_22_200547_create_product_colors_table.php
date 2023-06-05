@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId("product_Id")->references("id")->on("products")->onDelete('cascade');
             $table->string("color");
-            $table->timestamps();
         });
     }
 

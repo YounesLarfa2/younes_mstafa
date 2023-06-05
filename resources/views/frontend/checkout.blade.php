@@ -5,151 +5,133 @@
 
 @section('content')
     <!--header -->
-    <x-header :categoriers="$categoriers"></x-header>
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>Check Out</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <a href="./shop.html">Shop</a>
-                            <span>Check Out</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    <x-header :categoriers="$categoriers" :count="$count"></x-header>
+
+
 
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
+                <form action="{{route('checkout')}}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
-                            <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
-                            here</a> to enter your code</h6>
-                            <h6 class="checkout__title">Billing Details</h6>
+                        @if(isset($user_has_order))
+
+                        <h6 class="checkout__title">Billing Details</h6>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <p>Full Name<span>*</span></p>
+                                        <input type="text" value="{{auth()->user()->name}}" name="name" >
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
+                                
                             </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
-                            </div>
+
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" value="{{$user_has_order->address}}" name="address" >
                             </div>
                             <div class="checkout__input">
                                 <p>Town/City<span>*</span></p>
-                                <input type="text">
+                                <input type="text" value="{{$user_has_order->city}}" name="city">
                             </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
-                            </div>
+
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" value="{{$user_has_order->phone}}" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" value="{{auth()->user()->email}}">
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
+
+                        @else
+                        <h6 class="checkout__title">Billing Details</h6>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Name<span>*</span></p>
+                                        <input type="text" value="">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" value="" name="address">
                             </div>
                             <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
+                                <p>Town/City<span>*</span></p>
+                                <input type="text" value="" name="city">
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Note about your order, e.g, special noe for delivery
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
+
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Phone<span>*</span></p>
+                                        <input type="text" value="" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text" value="" name="email">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
+
+                        @endif
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
                                 <ul class="checkout__total__products">
-                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
-                                    <li>02. German chocolate <span>$ 170.0</span></li>
-                                    <li>03. Sweet autumn <span>$ 170.0</span></li>
-                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
+                                    @foreach ($number_quantity as $key => $one)
+                                    <li>{{$key + 1}}- {{$one->product_color_size->product_color->product->name}} <span>${{$one['total'] * $one['quantity']}}</span></li>
+
+                                    @endforeach
+
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>$750.99</span></li>
-                                    <li>Total <span>$750.99</span></li>
+                                    <li>Total <span>
+                                    ${{$total}}
+                                    <input type="hidden" name="total" value={{$total}} name="total"/>
+                                    </span></li>
                                 </ul>
-                                <div class="checkout__input__checkbox">
-                                    <label for="acc-or">
-                                        Create an account?
-                                        <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+
+                              
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
+                                    Free shippment
+                                    <input type="checkbox" id="payment" checked>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
                                     <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
+                                        Cash on delivery 
+                                        <input type="checkbox" id="paypal" checked>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>

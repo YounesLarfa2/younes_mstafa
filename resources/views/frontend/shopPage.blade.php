@@ -5,32 +5,16 @@
 
 @section('content')
 
+
+
     <!--header -->
-    <x-header :categoriers="$categoriers"></x-header>
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>Shop</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <span>Shop</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
+    <x-header :categoriers="$categoriers" :count="$count"></x-header>
+    
     <!-- Shop Section Begin -->
     <section class="shop spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-2">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
                             <form action="#">
@@ -44,12 +28,12 @@
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div id="collapseOne" class="collapse " data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
                                                     @foreach ($categoriers as $categorier)
-                                                        <li><a href="#">{{ $categorier->name }}</a></li>
+                                                        <li><a href="{{route('frontend.category_name',$categorier->id)}}">{{ $categorier->name }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -57,25 +41,6 @@
                                     </div>
                                 </div>
 
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__price">
-                                                <ul>
-                                                    <li><a href="#">$0.00 - $50.00</a></li>
-                                                    <li><a href="#">$50.00 - $100.00</a></li>
-                                                    <li><a href="#">$100.00 - $150.00</a></li>
-                                                    <li><a href="#">$150.00 - $200.00</a></li>
-                                                    <li><a href="#">$200.00 - $250.00</a></li>
-                                                    <li><a href="#">250.00+</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseFour">Size</a>
@@ -149,6 +114,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-heading text-start">
+                                        <button class="btn btn-danger w-50">Filter</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -179,6 +149,7 @@
                             @foreach ($products as $product)
                                 <x-product-card :product="$product"></x-product-card>
                             @endforeach
+
                         @else
                             <h2 class="no-product">There is no product at this time</h2>
                         @endif

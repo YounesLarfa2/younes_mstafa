@@ -16,7 +16,7 @@
     --------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
-        $("#preloder").delay(200).fadeOut("slow");
+        $("#preloder").fadeOut();
 
         /*------------------
             Gallery filter
@@ -41,11 +41,11 @@
 
     //Search Switch
     $('.search-switch').on('click', function () {
-        $('.search-model').fadeIn(400);
+        $('.search-model').fadeIn(100);
     });
 
     $('.search-close-switch').on('click', function () {
-        $('.search-model').fadeOut(400, function () {
+        $('.search-model').fadeOut(200, function () {
             $('#search-input').val('');
         });
     });
@@ -205,7 +205,7 @@
         $(this).prop('Counter', 0).animate({
             Counter: $(this).text()
         }, {
-            duration: 4000,
+            duration: '100',
             easing: 'swing',
             step: function (now) {
                 $(this).text(Math.ceil(now));

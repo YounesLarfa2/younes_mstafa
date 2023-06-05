@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("users_Id")->references("id")->on("users");
+            $table->foreignId("users_Id")->references("id")->on("users")->onDelete('cascade');
             $table->string("status");
             $table->string("total_price");
             $table->string("address");
             $table->string("city");
-            $table->string("full name");
+            $table->string("full_name");
             $table->string("phone");
             $table->timestamps();
+        
         });
     }
 

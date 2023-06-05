@@ -43,21 +43,21 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png|max:2048',
-            'category_name' =>'required'
+            'category_id' =>'required'
             ]);
-        $category = Category::where('name',$req->category_name)->first();
+        $category = Category::where('id','1')->first();
+
         $product = new Product();
          if($req->file()) {
             $fileName = time().'_'.$req->file('image')->getClientOriginalName();
             $filePath = $req->file('image')->move(public_path('uploads/'),$fileName);
             $product->name = $req->name;
             $product->price = $req->price;
-            $product->discount_price = $req->discount_price;
             $product->description = $req->description;
             $product->category_id = $category->id;
             $product->image = $fileName;
             $product->save();
-
+            
         };
 
         if(isset($req->qte_1)){
@@ -94,8 +94,6 @@ class ProductController extends Controller
                 $product_color_size->product_size_id = $custom_product_size->id;
                 $product_color_size->product_color_id = $custom_product_color->id;
                 $product_color_size->quantity = $req->{'qte_' . $i};
-                $product_color_size->price = $req->{'price_' . $i};
-                $product_color_size->discount = 10;
                 $product_color_size->status = 'pending';
                 $product_color_size->save();
             }

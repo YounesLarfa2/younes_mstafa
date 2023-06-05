@@ -11,13 +11,12 @@ use App\Models\product_color;
 
 class Product extends Model
 {
+    public $timestamps = false;
+
     use HasFactory;
     protected $table = "products";
     protected $fillable = ['name', 'description', 'price', 'discount_price', 'image', 'category_id'];
-    public function product_images()
-    {
-        return $this->hasMany(ImageUpload::class);
-    }
+
 
     public function category()
     {

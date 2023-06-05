@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('image_uploads', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('image_path');
-             $table->foreignId("product_id")->references("id")->on("products")->ondelete('cascade');
+            $table->foreignId("user_id")->references("id")->on("users");
+            $table->string("image");
+            $table->foreignId("product_color_size_id")->references("id")->on("product_color_size");
+            $table->integer("quantity");
+            $table->decimal("total",10,2)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('image_uploads');
+        Schema::dropIfExists('carts');
     }
 };

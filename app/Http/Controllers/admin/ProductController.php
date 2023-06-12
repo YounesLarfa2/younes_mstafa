@@ -21,6 +21,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(8);
+        
         $collapsed = 'display-products';
         return view('admin2.products.index',compact('products','collapsed'));
     }
@@ -45,7 +46,7 @@ class ProductController extends Controller
             'image' => 'required|mimes:jpg,jpeg,png|max:2048',
             'category_id' =>'required'
             ]);
-        $category = Category::where('id','1')->first();
+
 
         $product = new Product();
          if($req->file()) {
@@ -54,10 +55,10 @@ class ProductController extends Controller
             $product->name = $req->name;
             $product->price = $req->price;
             $product->description = $req->description;
-            $product->category_id = $category->id;
+            $product->category_id = $req->category_id;
             $product->image = $fileName;
             $product->save();
-            
+
         };
 
         if(isset($req->qte_1)){

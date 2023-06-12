@@ -82,8 +82,8 @@ product Details
 
         </div>
     </div>
-    <div class="col-lg-6 align-self-baseline">
-        <img src="{{asset('hero/hero-2.jpg')}}" alt="" style="height: 100%">
+    <div class="col-lg-6 align-self-baseline ">
+        <img   src='{{ asset('uploads/'. $product->image) }}' alt="" style="width: 100%">
         <div class="product__details__last__option ">
             {{-- <img src="{{asset('uploads/'. $product->image)}}" alt="">--}}
             <div class="product__details__cart__option  ">

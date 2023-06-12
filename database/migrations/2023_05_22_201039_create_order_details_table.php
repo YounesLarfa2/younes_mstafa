@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("order_id")->references("id")->on("orders");
-            $table->foreignId("product_colors_size_id")->references("id")->on("product_color_size");
+            $table->foreignId("order_id")->references("id")->on("orders")->onDelete('cascade');
+            $table->foreignId("product_colors_size_id")->references("id")->on("product_color_size")->onDelete('cascade');
             $table->string("quantity");
             $table->decimal("price",10,2)->nullable();
         });

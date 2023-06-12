@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\frontend\MainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ProfileController;
 
 
@@ -30,18 +31,18 @@ Route::name('frontend.')
 Route::name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('home',function(){
+        Route::get('home', function () {
             $collapsed = 'dashboard';
 
-            return view('admin2.homePage',compact('collapsed'));
+            return view('admin2.homePage', compact('collapsed'));
         })->name('home');
         Route::resource('products', ProductController::class);
-        Route::post('product/store-img',[ProductController::class,'storeImages'])->name('products.storeImages');
+        Route::post('product/store-img', [ProductController::class, 'storeImages'])->name('products.storeImages');
         Route::resource('categories', Categorycontroller::class);
-        Route::get('show_categories', [Categorycontroller::class ,'show_data'])->name('categories.list');
+        Route::get('show_categories', [Categorycontroller::class, 'show_data'])->name('categories.list');
         Route::resource('orders', OrderController::class);
         Route::resource('users', UserController::class);
-        Route::get('profile' ,[UserController::class,'profile'])->name('users.profile');
+        Route::get('profile', [UserController::class, 'profile'])->name('users.profile');
     });
 
 
@@ -56,22 +57,30 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('guest')->group(function() {
+Route::middleware('guest')->group(function () {
     Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
     Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
     Route::get('/order/{order}', [OrderController::class, 'show_order'])->name('show_order');
-//    Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
-//    Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
+    //    Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
+    //    Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
 });
 
 Route::delete('/destroy_cart/{cart}', [CartController::class, 'delete_cart'])->name('destroy_cart');
 Route::post('/cart/{product_id}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
 Route::post('update-cart', [CartController::class, 'update_cart'])->name('update_cart');
-Route::get('/showme',function(){
+Route::get('/showme', function () {
     dd(session()->all());
 });
 Route::post('/checkout', [MainController::class, 'checkout_store'])->name('checkout');
 Route::get('/success_checkout', [MainController::class, 'success_checkout'])->name('success_checkout');
 
-require __DIR__.'/auth.php';
+
+/* start filter products*/
+
+Route::get('/filter', [FilterController::class, 'filter'])->name('filter');
+
+
+/* end filter products*/
+
+require __DIR__ . '/auth.php';

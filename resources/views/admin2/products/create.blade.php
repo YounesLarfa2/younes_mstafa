@@ -86,6 +86,11 @@
                                                     <input type="radio" value="red" class="checkbox-input color-pick" name="color-pick" checked>
 
                                                 </label>
+                                                <div class="color-box " style="background: white;border : solid"></div>
+                                                <label class="checkbox-label">
+                                                    <input type="radio" value="white" class="checkbox-input color-pick" name="color-pick">
+
+                                                </label>
                                                 <div class="color-box green"></div>
                                                 <label class="checkbox-label">
                                                     <input type="radio" value="green" class="checkbox-input color-pick" name="color-pick">
@@ -199,7 +204,7 @@
                                             if (tbody.children.length > 10) {
                                                 alert('you can not depass 10 products !')
 
-                                            } 
+                                            }
                                             else if (!dont_create) {
                                                 var tr = document.createElement('tr')
                                                 tr.innerHTML = `   <td style='vertical-align: middle' id='${color}'>
@@ -215,7 +220,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td style='vertical-align: middle'>
-                                                                <div class="userDatatable-content" name='qte-${document.querySelector('tbody').children.length + 1}'>                                 
+                                                                <div class="userDatatable-content" name='qte-${document.querySelector('tbody').children.length + 1}'>
                                                                 <input  type='number' class='form-control w-25' value='1' name='qte_${document.querySelector('tbody').children.length + 1}' />
                                                                 </div>
                                                                 <input id='hidden-qte' type='hidden' value='1'  />
@@ -253,10 +258,10 @@
 
                                             })
                                         }
-                                        
+
 
                                     )
-                                    
+
                                 </script>
                             </div>
                         </div>

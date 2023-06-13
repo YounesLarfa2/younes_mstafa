@@ -123,7 +123,7 @@
                         @endif
                     </div>
                     <div class="custom-pagination">
-                        {{ $products->links() }}
+                        {{-- {{ $products->links() }} --}}
                     </div>
                 </div>
             </div>

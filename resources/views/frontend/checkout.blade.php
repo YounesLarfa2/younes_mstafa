@@ -102,7 +102,8 @@
                                     @foreach ($number_quantity as $key => $one)
                                         <li>{{ $key + 1 }}-
                                             {{ $one->product_color_size->product_color->product->name }}
-                                            <span>${{ $one['total'] * $one['quantity'] }}</span></li>
+                                            <span>${{ $one['total'] * $one['quantity'] }}</span>
+                                        </li>
                                     @endforeach
 
                                 </ul>
@@ -129,7 +130,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <button type="submit" class="site-btn" style="background:#8eabff;">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>

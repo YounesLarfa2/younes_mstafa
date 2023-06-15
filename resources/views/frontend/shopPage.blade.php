@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-heading text-start">
-                                            <input type="submit" value="Filter" class="btn btn-danger w-50">
+                                            <input type="submit" value="Filter" class="btn btn-info w-50">
                                         </div>
                                     </div>
                                 </div>

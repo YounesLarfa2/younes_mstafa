@@ -21,8 +21,8 @@
         <div class="row justify-content-center align-items-center  ">
             <div class="col-lg-3 col-md-3 ">
                 <div class="header__logo ">
-                    {{-- <a href="{{ url('/') }}"><img src="{{ asset('uploads/Logo.png') }}"
-                            alt="" /></a> --}}
+                    <a href="{{ url('/') }}"><img src="{{ asset('uploads/logo2.png') }}" alt=""
+                            width="150px" /></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6  ">
@@ -69,7 +69,7 @@
                         }
                     </style>
                     <a href="{{ url('/cart') }}" class="text-dark ">
-                        <i class="fa fa-shopping-cart  text-dark  number-of-carts" style="font-size: 24px">
+                        <i class="fa fa-shopping-cart  text-dark  number-of-carts" style="font-size: 24px;">
                             @auth
                                 @if (isset($count))
                                     {{ $count }}

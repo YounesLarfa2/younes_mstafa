@@ -12,22 +12,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <!--header -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/magnific-popup.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" type="text/css">
 
     <!-- Css custom -->
-    <link rel="stylesheet" href="{{asset('frontend/customStyle/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/customStyle/style.css') }}" type="text/css">
 
 </head>
 
@@ -58,18 +54,17 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{asset('frontend/js/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.nicescroll.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.countdown.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.slicknav.js')}}"></script>
-    <script src="{{asset('frontend/js/mixitup.min.js')}}"></script>
-    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('frontend/js/main.js')}}"></script>
-    <script src="{{asset('admin2/js/jquery-3.7.0.min.js')}}"></script>
+    <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('frontend/js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ asset('admin2/js/jquery-3.7.0.min.js') }}"></script>
     @yield('scripts')
     <script>
         disable_spinner(true)
@@ -86,8 +81,8 @@
         }
     </script>
     <script>
-            var size_id  ;
-            var color_id;
+        var size_id;
+        var color_id;
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -98,7 +93,7 @@
             showMember();
 
             $('.size-check').on('click', function() {
-                $(this).children(':first-child').attr('checked','checked');
+                $(this).children(':first-child').attr('checked', 'checked');
                 size_id = $(this).attr('size_id');
                 color_id = $('.opacity').attr('color')
                 if (color_id) {
@@ -128,12 +123,12 @@
                     type: 'POST',
                     url: url,
                     data: form,
-                    dataType : 'json',
-                        success: function(data) {
+                    dataType: 'json',
+                    success: function(data) {
                         console.log(data)
                         disable_spinner(true);
-                        if(data.count){
-                            $(".number-of-carts").empty().html(' '+data.count)
+                        if (data.count) {
+                            $(".number-of-carts").empty().html(' ' + data.count)
                         }
                     },
                     error: function(err) {
@@ -144,7 +139,7 @@
                     }
                 });
             });
- 
+
 
             function showMember() {
                 $.get("{{ route('admin.categories.list') }}", function(data) {
@@ -157,13 +152,6 @@
 
         })
     </script>
-    <script> 
-    toastr.options = {
-        "progressBar" : true,
-    }
-    toastr.success('mabrok mabrok')
-    </script>
-
 </body>
 
 </html>

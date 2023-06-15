@@ -115,7 +115,7 @@ class MainController extends Controller
         $categoriers = Category::all();
         $product_colors = product_color::all()->groupBy("color");
         $product_sizes = product_size::all()->groupBy("size");
-        
+
         // dd($product_colors);die;
         return  view('frontend.shopPage', compact("products", "productsAll", "categoriers", "count", "product_colors", "product_sizes"));
     }
@@ -131,11 +131,13 @@ class MainController extends Controller
         foreach ($number_quantity as $one) {
             $count = $count + $one['quantity'];
         }
-        $categorie_name = $categorie->name;
+        $categorie = $categorie;
         $categoriers = Category::all();
         $Allproducts = $categorie->products;
         $products = $categorie->products()->paginate(8);
-        return  view('frontend.categorie', compact("categoriers", "categorie_name", "products", "count"));
+        $product_colors = product_color::all()->groupBy("color");
+        $product_sizes = product_size::all()->groupBy("size");
+        return  view('frontend.categorie', compact("categoriers", "categorie", "products", "count", "product_colors", "product_sizes"));
     }
 
 

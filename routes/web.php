@@ -79,8 +79,7 @@ Route::get('/success_checkout', [MainController::class, 'success_checkout'])->na
 /* start filter products*/
 
 Route::get('/filter', [FilterController::class, 'filter'])->name('filter');
-
-
+Route::get('/filter/{id}/category', [FilterController::class, 'filter_category'])->name('filter.category');
 /* end filter products*/
 
 require __DIR__ . '/auth.php';

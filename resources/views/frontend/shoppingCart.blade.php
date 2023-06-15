@@ -34,7 +34,7 @@ shoppin cart
   <div class="container">
     @if(Session::has('alert'))
 <div class="alert success bg-dark text-white">
-    <span class="closebtn">&times;</span>  
+    <span class="closebtn">&times;</span>
     <strong>Hey wait!</strong> {{Session::get('alert')}}
   </div>
 @endif
@@ -107,7 +107,7 @@ shoppin cart
                         <tbody>
 
                             @if(session('cart') !== null && count(session('cart'))  != 0 )
-                                
+
                             @foreach(session('cart') as $row)
                             <tr>
                                 <td class="product__cart__item">
@@ -188,7 +188,7 @@ shoppin cart
                         <li>Shipping <span>free</span></li>
                         <li>Payment Method <span> Cash on delivery</span></li>
                     </ul>
-                    <a href="{{url('/checkout')}}" class="primary-btn">Proceed to checkout</a>
+                    <a href="{{url('/checkout')}}" class="primary-btn" style="background:#8eabff;">Proceed to checkout</a>
                 </div>
             </div>
         </div>
@@ -196,11 +196,11 @@ shoppin cart
 </section>
 
 @section('scripts')
-<script> 
+<script>
 
     var close = document.getElementsByClassName("closebtn");
     var i;
-    
+
     for (i = 0; i < close.length; i++) {
       close[i].onclick = function(){
         var div = this.parentElement;
